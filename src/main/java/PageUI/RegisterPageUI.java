@@ -2,11 +2,11 @@ package PageUI;
 
 public class RegisterPageUI {
 	public static final String REGISTER_BUTTON = "//button[@id='register-button']";
-	public static final String FIRSTNAME_ERROR_MESSAGE = "//span[@id='FirstName-error']";
-	public static final String LASTNAME_ERROR_MESSAGE = "//span[@id='LastName-error']";
-	public static final String EMAIL_ERROR_MESSAGE = "//span[@id='Email-error']";
-	public static final String PASS_ERROR_MESSAGE = "//span[@id='Password-error']";
-	public static final String CONFIRM_PASS_ERROR_MESSAGE = "//span[@id='ConfirmPassword-error']";
+//	public static final String FIRSTNAME_ERROR_MESSAGE = "//span[@id='FirstName-error']";
+//	public static final String LASTNAME_ERROR_MESSAGE = "//span[@id='LastName-error']";
+//	public static final String EMAIL_ERROR_MESSAGE = "//span[@id='Email-error']";
+//	public static final String PASS_ERROR_MESSAGE = "//span[@id='Password-error']";
+//	public static final String CONFIRM_PASS_ERROR_MESSAGE = "//span[@id='ConfirmPassword-error']";
 	public static final String REGIS_COMPLETE = "//div[text()='Your registration completed']";
 	public static final String EMAIL_EXISTS = "//li[text()='The specified email already exists']";
 	public static final String PASS_MUST = "//span[@id='Password-error']";
@@ -18,4 +18,5 @@ public class RegisterPageUI {
 	public static final String CONFIRM_PASSWORD_TEXTBOX = "//input[@id='ConfirmPassword']";
 	public static final String LOGOUT_BUTTON = "//a[@class='ico-logout']";
 	public static final String REGISTER_LINK = "//a[@class='ico-register']";
+	 public static final String ERROR_MESSAGE = "//span[@id='%s-error']";
 }
