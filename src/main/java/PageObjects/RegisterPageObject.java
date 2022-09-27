@@ -42,11 +42,6 @@ public class RegisterPageObject extends BasePage {
 		String errorMessage = getTextOfElement(driver, RegisterPageUI.CONFIRM_PASS_ERROR_MESSAGE);
 		return errorMessage.equals(value);
 	}
-
-	public boolean checkEmailWrongMessage(String value) {
-		String wrongMessage = getTextOfElement(driver, RegisterPageUI.EMAIL_WRONG_MESSAGE);
-		return wrongMessage.equals(value);
-	}
 	public boolean regisComplete(String value) {
 		String regiscomplete = getTextOfElement(driver, RegisterPageUI.REGIS_COMPLETE);
 		return regiscomplete.equals(value);
@@ -67,7 +62,34 @@ public class RegisterPageObject extends BasePage {
 		String errorMessage = getTextOfElement(driver, RegisterPageUI.PASS_NOTMATCH);
 		return errorMessage.equals(value);
 	}
-	
+	public void enterToTextBoxEmail(String email) {
+		waitForElementvisible(driver, RegisterPageUI.EMAIL_TEXTBOX);
+		sendKeysToElement(driver, RegisterPageUI.EMAIL_TEXTBOX, email);
+	}
+	public void enterToTextBoxFirstName(String firstName) {
+		waitForElementvisible(driver, RegisterPageUI.FIRSTNAME_TEXTBOX);
+		sendKeysToElement(driver, RegisterPageUI.FIRSTNAME_TEXTBOX, firstName);
+	}
+	public void enterToTextBoxLastName(String lastName) {
+		waitForElementvisible(driver, RegisterPageUI.LASTNAME_TEXTBOX);
+		sendKeysToElement(driver, RegisterPageUI.LASTNAME_TEXTBOX, lastName);
+	}
+	public void enterToTextBoxPassword(String password) {
+		waitForElementvisible(driver, RegisterPageUI.PASSWORD_TEXTBOX);
+		sendKeysToElement(driver, RegisterPageUI.PASSWORD_TEXTBOX, password);
+	}
+	public void enterToTextBoxConfirmPassword(String confirmPassword) {
+		waitForElementvisible(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX);
+		sendKeysToElement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, confirmPassword);
+	}
+	public void clickToLogoutButton() {
+		waitForElementClickable(driver, RegisterPageUI.LOGOUT_BUTTON);
+		clickToElement(driver, RegisterPageUI.LOGOUT_BUTTON);
+	}
+	public void clickToRegisterLink() {
+		waitForElementClickable(driver, RegisterPageUI.REGISTER_LINK);
+		clickToElement(driver, RegisterPageUI.REGISTER_LINK);
+	}
 
 	
 }

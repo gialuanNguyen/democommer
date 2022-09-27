@@ -36,69 +36,57 @@ public class RegisterPage extends BaseTest {
 		sleepInSecond(3);
 	}
 
-	// @Test
+	 @Test
 	public void TC_02_invalidEmail() {
-		registerPage.getElement(driver, "//input[@name='Email']").sendKeys("12345");
-		sleepInSecond(3);
+		registerPage.enterToTextBoxEmail("123456");
 		registerPage.clickToRegisterButton();
-		sleepInSecond(3);
-		Assert.assertTrue(registerPage.checkEmailWrongMessage("Wrong email"));
+		Assert.assertTrue(registerPage.checkEmailErrorMessage("Wrong email"));
 		sleepInSecond(3);
 	}
 
-	// @Test
+	 @Test
 	public void TC_03_RegisComplete() {
-		registerPage.clickToElement(driver, "//span[@class='male']");
-		registerPage.getElement(driver, " //input[@name='FirstName']").sendKeys("luan");
-		registerPage.getElement(driver, " //input[@name='LastName']").sendKeys("nguyen");
-		registerPage.clickToElement(driver, "//select[@name='DateOfBirthDay']/option[9]");
-		registerPage.clickToElement(driver, "//select[@name='DateOfBirthMonth']/option[11]");
-		registerPage.clickToElement(driver, "//select[@name='DateOfBirthYear']/option[86]");
-		registerPage.getElement(driver, " //input[@name='Email']").sendKeys("12345678@gmail.com");
-		registerPage.getElement(driver, " //input[@id='Password']").sendKeys("123456");
-		registerPage.getElement(driver, " //input[@id='ConfirmPassword']").sendKeys("123456");
-		sleepInSecond(3);
+		registerPage.refeshCurrentPage(driver);
+		registerPage.enterToTextBoxFirstName("luaan");
+		registerPage.enterToTextBoxLastName("nguyen");
+		registerPage.enterToTextBoxEmail("12345678910111@gmail.com");
+		registerPage.enterToTextBoxPassword("123456");
+		registerPage.enterToTextBoxConfirmPassword("123456");
 		registerPage.clickToRegisterButton();
-		sleepInSecond(3);
 		Assert.assertTrue(registerPage.regisComplete("Your registration completed"));
 		sleepInSecond(3);
-
+		registerPage.clickToLogoutButton();
 	}
 
-	// @Test
+	@Test
 	public void TC_04_RegisComplete() {
-		registerPage.clickToElement(driver, "//span[@class='male']");
-		registerPage.getElement(driver, " //input[@name='FirstName']").sendKeys("ln");
-		registerPage.getElement(driver, " //input[@name='LastName']").sendKeys("ngyen");
-		registerPage.clickToElement(driver, "//select[@name='DateOfBirthDay']/option[9]");
-		registerPage.clickToElement(driver, "//select[@name='DateOfBirthMonth']/option[11]");
-		registerPage.clickToElement(driver, "//select[@name='DateOfBirthYear']/option[86]");
-		registerPage.getElement(driver, " //input[@name='Email']").sendKeys("12345678@gmail.com");
-		registerPage.getElement(driver, " //input[@id='Password']").sendKeys("123456");
-		registerPage.getElement(driver, " //input[@id='ConfirmPassword']").sendKeys("123456");
-		sleepInSecond(3);
+		registerPage.clickToRegisterLink();
+		registerPage.enterToTextBoxFirstName("luaan");
+		registerPage.enterToTextBoxLastName("nguyen");
+		registerPage.enterToTextBoxEmail("123456789@gmail.com");
+		registerPage.enterToTextBoxPassword("123456");
+		registerPage.enterToTextBoxConfirmPassword("123456");
 		registerPage.clickToRegisterButton();
-		sleepInSecond(3);
 		Assert.assertTrue(registerPage.emailExists("The specified email already exists"));
-		sleepInSecond(3);
+		
 
 	}
 
-	//@Test
+	@Test
 	public void TC_05_RegisterWithEmptyData() {
-		registerPage.getElement(driver, " //input[@id='Password']").sendKeys("123");
-		registerPage.getElement(driver, " //input[@id='ConfirmPassword']").sendKeys("123456");
-		sleepInSecond(3);
+		registerPage.clickToRegisterLink();
+		registerPage.enterToTextBoxPassword("1234");
+		registerPage.enterToTextBoxConfirmPassword("123456");
+		registerPage.clickToRegisterButton();
 		Assert.assertTrue(registerPage.passMust("Password must meet the following rules:"));
 		Assert.assertTrue(registerPage.passleast("must have at least 6 characters"));
-		sleepInSecond(3);
 	}
 	@Test
 	public void TC_06_RegisterWithEmptyData() {
-		registerPage.getElement(driver, " //input[@id='Password']").sendKeys("123456");
-		registerPage.getElement(driver, " //input[@id='ConfirmPassword']").sendKeys("123451231367");
+		registerPage.clickToRegisterLink();
+		registerPage.enterToTextBoxPassword("12345565");
+		registerPage.enterToTextBoxConfirmPassword("123456");
 		registerPage.clickToRegisterButton();
-		sleepInSecond(3);
 		Assert.assertTrue(registerPage.passNotMatch("The password and confirmation password do not match."));
 		sleepInSecond(3);
 	}

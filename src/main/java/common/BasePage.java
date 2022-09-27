@@ -62,4 +62,8 @@ private WebDriverWait explicitWait;
 		explicitWait = new WebDriverWait(driver, 10);
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));
 	}
+	public void waitForElementvisible(WebDriver driver, String locator) {
+		explicitWait = new WebDriverWait(driver, 10);
+		explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
+	}
 }
