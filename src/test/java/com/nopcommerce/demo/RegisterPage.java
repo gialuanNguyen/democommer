@@ -12,7 +12,11 @@ import common.BaseTest;
 public class RegisterPage extends BaseTest {
 	WebDriver driver;
 	RegisterPageObject registerPage;
-
+	String firstName="luann";
+	String lastName="luanng";
+	String email="luan1@gmail.com";
+	String password="123456";
+	String cfpassword="123456";
 	@BeforeClass
 	public void beforeClass() {
 		String urlPage = "https://demo.nopcommerce.com/register?returnUrl=%2F";
@@ -47,25 +51,25 @@ public class RegisterPage extends BaseTest {
 	 @Test
 	public void TC_03_RegisComplete() {
 		registerPage.refeshCurrentPage(driver);
-		registerPage.enterToTextBoxFirstName("luaan");
-		registerPage.enterToTextBoxLastName("nguyen");
-		registerPage.enterToTextBoxEmail("12345678910111@gmail.com");
-		registerPage.enterToTextBoxPassword("123456");
-		registerPage.enterToTextBoxConfirmPassword("123456");
+		registerPage.enterToTextBoxFirstName(firstName);
+		registerPage.enterToTextBoxLastName(lastName);
+		registerPage.enterToTextBoxEmail(email);
+		registerPage.enterToTextBoxPassword(password);
+		registerPage.enterToTextBoxConfirmPassword(cfpassword);
 		registerPage.clickToRegisterButton();
 		Assert.assertTrue(registerPage.regisComplete("Your registration completed"));
-		sleepInSecond(3);
 		registerPage.clickToLogoutButton();
 	}
 
 	@Test
 	public void TC_04_RegisComplete() {
 		registerPage.clickToRegisterLink();
-		registerPage.enterToTextBoxFirstName("luaan");
-		registerPage.enterToTextBoxLastName("nguyen");
-		registerPage.enterToTextBoxEmail("123456789@gmail.com");
-		registerPage.enterToTextBoxPassword("123456");
-		registerPage.enterToTextBoxConfirmPassword("123456");
+		registerPage.refeshCurrentPage(driver);
+		registerPage.enterToTextBoxFirstName(firstName);
+		registerPage.enterToTextBoxLastName(lastName);
+		registerPage.enterToTextBoxEmail(email);
+		registerPage.enterToTextBoxPassword(password);
+		registerPage.enterToTextBoxConfirmPassword(cfpassword);
 		registerPage.clickToRegisterButton();
 		Assert.assertTrue(registerPage.emailExists("The specified email already exists"));
 		
@@ -79,7 +83,7 @@ public class RegisterPage extends BaseTest {
 		registerPage.enterToTextBoxConfirmPassword("123456");
 		registerPage.clickToRegisterButton();
 		Assert.assertTrue(registerPage.passMust("Password must meet the following rules:"));
-		Assert.assertTrue(registerPage.passleast("must have at least 6 characters"));
+		Assert.assertTrue(registerPage.passMust("must have at least 6 characters"));
 	}
 	@Test
 	public void TC_06_RegisterWithEmptyData() {

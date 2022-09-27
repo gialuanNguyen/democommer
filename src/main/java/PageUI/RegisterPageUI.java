@@ -9,8 +9,7 @@ public class RegisterPageUI {
 	public static final String CONFIRM_PASS_ERROR_MESSAGE = "//span[@id='ConfirmPassword-error']";
 	public static final String REGIS_COMPLETE = "//div[text()='Your registration completed']";
 	public static final String EMAIL_EXISTS = "//li[text()='The specified email already exists']";
-	public static final String PASS_MUST = "//p[text()='Password must meet the following rules: ']";
-	public static final String PASS_LEAST = "//li[text()='must have at least 6 characters']";
+	public static final String PASS_MUST = "//span[@id='Password-error']";
 	public static final String PASS_NOTMATCH = "//span[text()='The password and confirmation password do not match.']";
 	public static final String EMAIL_TEXTBOX = "//input[@id='Email']";
 	public static final String FIRSTNAME_TEXTBOX = "//input[@id='FirstName']";

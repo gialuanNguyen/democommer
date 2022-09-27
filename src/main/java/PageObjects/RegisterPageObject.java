@@ -52,11 +52,7 @@ public class RegisterPageObject extends BasePage {
 	}
 	public boolean passMust(String value) {
 		String errorMessage = getTextOfElement(driver, RegisterPageUI.PASS_MUST);
-		return errorMessage.equals(value);
-	}
-	public boolean passleast(String value) {
-		String errorMessage = getTextOfElement(driver, RegisterPageUI.PASS_LEAST);
-		return errorMessage.equals(value);
+		return errorMessage.contains(value);
 	}
 	public boolean passNotMatch(String value) {
 		String errorMessage = getTextOfElement(driver, RegisterPageUI.PASS_NOTMATCH);
