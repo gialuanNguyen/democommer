@@ -58,26 +58,26 @@ public class RegisterPageObject extends BasePage {
 		String errorMessage = getTextOfElement(driver, RegisterPageUI.PASS_NOTMATCH);
 		return errorMessage.equals(value);
 	}
-	public void enterToTextBoxEmail(String email) {
-		waitForElementvisible(driver, RegisterPageUI.EMAIL_TEXTBOX);
-		sendKeysToElement(driver, RegisterPageUI.EMAIL_TEXTBOX, email);
+	public void enterToTextBox(String email , String textbox ) {
+		waitForElementvisible(driver, RegisterPageUI.INPUT_TEXTBOX,textbox);
+		sendKeysToElement(driver, RegisterPageUI.INPUT_TEXTBOX, email ,textbox);
 	}
-	public void enterToTextBoxFirstName(String firstName) {
-		waitForElementvisible(driver, RegisterPageUI.FIRSTNAME_TEXTBOX);
-		sendKeysToElement(driver, RegisterPageUI.FIRSTNAME_TEXTBOX, firstName);
-	}
-	public void enterToTextBoxLastName(String lastName) {
-		waitForElementvisible(driver, RegisterPageUI.LASTNAME_TEXTBOX);
-		sendKeysToElement(driver, RegisterPageUI.LASTNAME_TEXTBOX, lastName);
-	}
-	public void enterToTextBoxPassword(String password) {
-		waitForElementvisible(driver, RegisterPageUI.PASSWORD_TEXTBOX);
-		sendKeysToElement(driver, RegisterPageUI.PASSWORD_TEXTBOX, password);
-	}
-	public void enterToTextBoxConfirmPassword(String confirmPassword) {
-		waitForElementvisible(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX);
-		sendKeysToElement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, confirmPassword);
-	}
+//	public void enterToTextBoxFirstName(String firstName) {
+//		waitForElementvisible(driver, RegisterPageUI.FIRSTNAME_TEXTBOX);
+//		sendKeysToElement(driver, RegisterPageUI.FIRSTNAME_TEXTBOX, firstName);
+//	}
+//	public void enterToTextBoxLastName(String lastName) {
+//		waitForElementvisible(driver, RegisterPageUI.LASTNAME_TEXTBOX);
+//		sendKeysToElement(driver, RegisterPageUI.LASTNAME_TEXTBOX, lastName);
+//	}
+//	public void enterToTextBoxPassword(String password) {
+//		waitForElementvisible(driver, RegisterPageUI.PASSWORD_TEXTBOX);
+//		sendKeysToElement(driver, RegisterPageUI.PASSWORD_TEXTBOX, password);
+//	}
+//	public void enterToTextBoxConfirmPassword(String confirmPassword) {
+//		waitForElementvisible(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX);
+//		sendKeysToElement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, confirmPassword);
+//	}
 	public void clickToLogoutButton() {
 		waitForElementClickable(driver, RegisterPageUI.LOGOUT_BUTTON);
 		clickToElement(driver, RegisterPageUI.LOGOUT_BUTTON);
@@ -90,5 +90,8 @@ public class RegisterPageObject extends BasePage {
         String errorMessage = getTextOfElement(driver, RegisterPageUI.ERROR_MESSAGE, textboxName);
         return errorMessage.equals(value);
     }
+	public void inputTexbox(String textbox , String value) {
+		waitForElementvisible(driver, value ,textbox);
+	}
 	
 }

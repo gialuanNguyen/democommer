@@ -11,11 +11,12 @@ public class RegisterPageUI {
 	public static final String EMAIL_EXISTS = "//li[text()='The specified email already exists']";
 	public static final String PASS_MUST = "//span[@id='Password-error']";
 	public static final String PASS_NOTMATCH = "//span[text()='The password and confirmation password do not match.']";
-	public static final String EMAIL_TEXTBOX = "//input[@id='Email']";
-	public static final String FIRSTNAME_TEXTBOX = "//input[@id='FirstName']";
-	public static final String LASTNAME_TEXTBOX = "//input[@id='LastName']";
-	public static final String PASSWORD_TEXTBOX = "//input[@id='Password']";
-	public static final String CONFIRM_PASSWORD_TEXTBOX = "//input[@id='ConfirmPassword']";
+//	public static final String EMAIL_TEXTBOX = "//input[@id='Email']";
+//	public static final String FIRSTNAME_TEXTBOX = "//input[@id='FirstName']";
+//	public static final String LASTNAME_TEXTBOX = "//input[@id='LastName']";
+//	public static final String PASSWORD_TEXTBOX = "//input[@id='Password']";
+//	public static final String CONFIRM_PASSWORD_TEXTBOX = "//input[@id='ConfirmPassword']";
+	public static final String INPUT_TEXTBOX = "//input[@id='%s']";
 	public static final String LOGOUT_BUTTON = "//a[@class='ico-logout']";
 	public static final String REGISTER_LINK = "//a[@class='ico-register']";
 	 public static final String ERROR_MESSAGE = "//span[@id='%s-error']";

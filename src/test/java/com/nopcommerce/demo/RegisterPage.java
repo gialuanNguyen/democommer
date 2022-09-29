@@ -44,7 +44,7 @@ public class RegisterPage extends BaseTest {
 	@Test
 	public void TC_02_invalidEmail() {
 		registerPage.refeshCurrentPage(driver);
-		registerPage.enterToTextBoxEmail("123456");
+		registerPage.enterToTextBox("123456","Email");
 		registerPage.clickToRegisterButton();
 		Assert.assertTrue(registerPage.checkErrorMessage("Email","Wrong email"));
 		sleepInSecond(3);
@@ -54,11 +54,11 @@ public class RegisterPage extends BaseTest {
 	@Test
 	public void TC_03_RegisComplete() {
 		registerPage.refeshCurrentPage(driver);
-		registerPage.enterToTextBoxFirstName(firstName);
-		registerPage.enterToTextBoxLastName(lastName);
-		registerPage.enterToTextBoxEmail(email);
-		registerPage.enterToTextBoxPassword(password);
-		registerPage.enterToTextBoxConfirmPassword(cfpassword);
+		registerPage.enterToTextBox(firstName,"FirstName");
+		registerPage.enterToTextBox(lastName,"LastName");
+		registerPage.enterToTextBox(email,"Email");
+		registerPage.enterToTextBox(password,"Password");
+		registerPage.enterToTextBox(cfpassword,"ConfirmPassword");
 		registerPage.clickToRegisterButton();
 		Assert.assertTrue(registerPage.regisComplete("Your registration completed"));
 		registerPage.clickToLogoutButton();
@@ -68,11 +68,11 @@ public class RegisterPage extends BaseTest {
 	public void TC_04_RegisComplete() {
 		registerPage.clickToRegisterLink();
 		registerPage.refeshCurrentPage(driver);
-		registerPage.enterToTextBoxFirstName(firstName);
-		registerPage.enterToTextBoxLastName(lastName);
-		registerPage.enterToTextBoxEmail(email);
-		registerPage.enterToTextBoxPassword(password);
-		registerPage.enterToTextBoxConfirmPassword(cfpassword);
+		registerPage.enterToTextBox(firstName,"FirstName");
+		registerPage.enterToTextBox(lastName,"LastName");
+		registerPage.enterToTextBox(email,"Email");
+		registerPage.enterToTextBox(password,"Password");
+		registerPage.enterToTextBox(cfpassword,"ConfirmPassword");
 		registerPage.clickToRegisterButton();
 		Assert.assertTrue(registerPage.emailExists("The specified email already exists"));
 
@@ -81,8 +81,8 @@ public class RegisterPage extends BaseTest {
 	@Test
 	public void TC_05_RegisterWithEmptyData() {
 		registerPage.clickToRegisterLink();
-		registerPage.enterToTextBoxPassword("1234");
-		registerPage.enterToTextBoxConfirmPassword("123456");
+		registerPage.enterToTextBox("1234","Password");
+		registerPage.enterToTextBox("123456","ConfirmPassword");
 		registerPage.clickToRegisterButton();
 		Assert.assertTrue(registerPage.passMust("Password must meet the following rules:"));
 		Assert.assertTrue(registerPage.passMust("must have at least 6 characters"));
@@ -91,8 +91,8 @@ public class RegisterPage extends BaseTest {
 	@Test
 	public void TC_06_RegisterWithEmptyData() {
 		registerPage.clickToRegisterLink();
-		registerPage.enterToTextBoxPassword("12345565");
-		registerPage.enterToTextBoxConfirmPassword("123456");
+		registerPage.enterToTextBox("12345565","Password");
+		registerPage.enterToTextBox("123456","ConfirmPassword");
 		registerPage.clickToRegisterButton();
 		Assert.assertTrue(registerPage.passNotMatch("The password and confirmation password do not match."));
 		sleepInSecond(3);

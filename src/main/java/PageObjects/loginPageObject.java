@@ -27,11 +27,15 @@ public class loginPageObject extends BasePage{
 		return errorMessage.equals(value);
 	}
 	public boolean loginUnsuccess(String value) {
-		String errorMessage = getTextOfElement(driver,LoginPageUI.LOGIN_UNSUCCESS );
-		return errorMessage.equals(value);
-	}
-	public boolean noCustomer(String value) {
 		String errorMessage = getTextOfElement(driver,LoginPageUI.NO_CUSTOMER );
-		return errorMessage.equals(value);
+		return errorMessage.contains(value);
+	}
+	public void inputTexbox(String value , String textbox) {
+		waitForElementvisible(driver, LoginPageUI.INPUT_TEXBOX,textbox);
+		sendKeysToElement(driver, LoginPageUI.INPUT_TEXBOX, value,textbox);
+	}
+	public boolean homePage(String value) {
+		String errorMessage = getTextOfElement(driver,LoginPageUI.HOME_PAGE );
+		return errorMessage.contains(value);
 	}
 }

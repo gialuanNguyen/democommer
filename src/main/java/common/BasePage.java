@@ -62,9 +62,16 @@ private WebDriverWait explicitWait;
 		getElement(driver, locator).clear();
 		getElement(driver, locator).sendKeys(valueInput);
 	}
+	public void sendKeysToElement(WebDriver driver, String locator, String valueInput , String...pamars ) {
+		getElement(driver, locator,pamars).clear();
+		getElement(driver, locator,pamars).sendKeys(valueInput);
+	}
 	
 	public void sendEnterToElement(WebDriver driver, String locator) {
 		getElement(driver, locator).sendKeys(Keys.ENTER);
+	}
+	public void sendEnterToElement(WebDriver driver, String locator,String...pamars) {
+		getElement(driver, locator,pamars).sendKeys(Keys.ENTER);
 	}
 	
 	//////////////////////////////////////////////////
@@ -75,6 +82,10 @@ private WebDriverWait explicitWait;
 	public void waitForElementvisible(WebDriver driver, String locator) {
 		explicitWait = new WebDriverWait(driver, 10);
 		explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
+	}
+	public void waitForElementvisible(WebDriver driver, String locator , String... pamars) {
+		explicitWait = new WebDriverWait(driver, 10);
+		explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(getDynamicLocator(locator, pamars))));
 	}
 	
 }
