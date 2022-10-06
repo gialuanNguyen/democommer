@@ -3,7 +3,7 @@
 	<test name="Test" >
 		<parameter name="browser" value="chrome" />
 		<classes>
-			<class name="com.nopcommerce.demo.MyAccount" />
+			<class name="com.nopcommerce.demo.TS_00_Precodition" />
 		</classes>
 	</test> <!-- Test -->
 	
