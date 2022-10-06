@@ -41,16 +41,7 @@ public class SearchObject extends BasePage {
 		clickElementandsendKeys(driver, SearchUI.SEARCH_KEYWORD, value);
 
 	}
-	public boolean checkProducts(String value) {
-		List<WebElement> ListOfProducts = getElements(driver, SearchUI.SEARCH_EQUAL);
-		for(WebElement values : ListOfProducts) {
-			values.getText().contains(value);
-		}
-		String errorMessage = getTextOfElement(driver, SearchUI.SEARCH_ERROR);
-		return errorMessage.contains(value);
 	
-		
-	}
 	public void clickAdvancedSearch() {
 		waitForElementClickable(driver, SearchUI.CLICK_ADVANCED_SEARCH);
 		clickToElement(driver, SearchUI.CLICK_ADVANCED_SEARCH);

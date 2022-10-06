@@ -50,11 +50,11 @@ public class SearchPage extends BaseTest{
 		searchPage.clickSearchButton();
 		Assert.assertTrue(searchPage.SearchError("No products were found that matched your criteria.","no-result"));
 	}
-	//@Test
+	@Test
 	public void TC03_Product() {
 		searchPage.input_SearchKeyword("Lenovo");
 		searchPage.clickSearchButton();
-		Assert.assertTrue(searchPage.checkProducts("Lenovo"));
+		Assert.assertTrue(searchPage.isSearchProductTitleDisplayedOnPageAsExpected("Lenovo"));
 	}
 	@Test
 	public void TC04_ParentCategori() {

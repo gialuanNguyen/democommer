@@ -3,11 +3,12 @@
 	<test name="Test" >
 		<parameter name="browser" value="chrome" />
 		<classes>
-			<class name="com.nopcommerce.demo.MyAccount" />
+			<!--  <class name="com.nopcommerce.demo.MyAccount" />
 			<class name="com.nopcommerce.demo.loginPage" />
 			<class name="com.nopcommerce.demo.RegisterPage" />
 			<class name="com.nopcommerce.demo.SearchPage" />
-			<class name="com.nopcommerce.demo.WishList" />
+			<class name="com.nopcommerce.demo.WishList" />-->
+			<class name="com.nopcommerce.demo.SearchPage" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
