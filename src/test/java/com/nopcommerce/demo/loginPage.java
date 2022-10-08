@@ -89,7 +89,7 @@ public class loginPage extends BaseTest {
 		loginPage.inputTexbox(Email, "Email");
 		loginPage.inputTexbox(Password2, "Password");
 		loginPage.clickTologinButton();
-		Assert.assertTrue(loginPage.homePage("Welcome to our store"));
+		Assert.assertTrue(loginPage.checkPageUrl("https://demo.nopcommerce.com/"));
 		;
 	}
 }

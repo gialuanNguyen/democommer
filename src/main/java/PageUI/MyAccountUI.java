@@ -21,5 +21,5 @@ public class MyAccountUI {
 	public static final String INPUT_CHANGE_PASSWORD ="//input[@id='%s']";
 	public static final String CHANGE_PASSWORD_BUTTON ="//button[@class='button-1 change-password-button']";
 	public static final String CHANGE_PASSWORD_SUCCESS ="//p[@class='content']";
-	
+	public static final String LOGOUT_BUTTON = "//a[@class='ico-logout']";
 }

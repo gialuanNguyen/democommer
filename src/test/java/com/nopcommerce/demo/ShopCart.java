@@ -8,19 +8,19 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import PageObjects.HomePageObject;
-import PageObjects.MyAccountObject;
+import PageObjects.ShopCartObject;
 import PageObjects.WishListObject;
 import PageObjects.loginPageObject;
 import common.BaseTest;
 
-public class WishList extends BaseTest{
+public class ShopCart extends BaseTest{
 	WebDriver driver;
 	WishListObject WishList;
 	loginPageObject loginPage;
 	String Password2 = "123456";
 	String Email = "123456@gmail.com";
 	HomePageObject homePage;
-
+	ShopCartObject shopCart;
 	@Parameters({ "browser" })
 	@BeforeClass
 	public void beforeClass(String browserName) {
@@ -29,6 +29,7 @@ public class WishList extends BaseTest{
 		WishList = new WishListObject(driver);
 		loginPage = new loginPageObject(driver);
 		homePage = new HomePageObject(driver);
+		shopCart = new ShopCartObject(driver);
 	}
 
 	@AfterClass
@@ -36,7 +37,7 @@ public class WishList extends BaseTest{
 		driver.quit();
 	}
 	@Test
-	public void TC01_AddToWishLish() {
+	public void TC01_UpdateShopcart() {
 		homePage.clickLogin();
 		loginPage.inputTexbox(Email, "Email");
 		loginPage.inputTexbox(Password2, "Password");
@@ -47,17 +48,20 @@ public class WishList extends BaseTest{
 		WishList.clickProduct("Lenovo IdeaCentre 600 All-in-One PC");
 		WishList.clickAddtoWishList();
 		Assert.assertTrue(WishList.checkAddToWishList("The product has been added to your "));
-		WishList.clickClose();	
+		WishList.clickClose();
 		sleepInSecond(3);
-	}
-	@Test
-	public void TC02_AddToCart() {
 		homePage.clickWishList();
 		WishList.clickAddToCart();
 		WishList.clickAddToCartButton();
-		Assert.assertTrue(WishList.checkShopcart("Lenovo IdeaCentre 600 All-in-One PC"));
-		homePage.clickWishList();
-		Assert.assertTrue(WishList.noProductWishList("The wishlist is empty!"));
-		
+		sleepInSecond(3);
+		shopCart.input_Qty("5");
+		shopCart.clickUpdateShopcartButton();
+		Assert.assertEquals(shopCart.getAttributeQty("value"),"5");
+			
+	}
+	@Test
+	public void TC02_RemoveShopcart() {
+		shopCart.clickRemoveShopcartButton();
+		Assert.assertTrue(shopCart.checkRemove("Your Shopping Cart is empty!"));
 	}
 }

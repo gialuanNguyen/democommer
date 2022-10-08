@@ -13,9 +13,9 @@ public class WishListObject extends BasePage{
 		this.driver = driver;
 	}
 	
-	public void clickProduct() {
-		waitForElementvisible(driver, WishLishUI.CLICK_PRODUCT);
-		clickToElement(driver, WishLishUI.CLICK_PRODUCT);
+	public void clickProduct(String textbox) {
+		waitForElementvisible(driver, WishLishUI.CLICK_PRODUCT,textbox);
+		clickToElement(driver, WishLishUI.CLICK_PRODUCT,textbox);
 	}
 	public void clickAddtoWishList() {
 		waitForElementvisible(driver, WishLishUI.CLICK_ADD_WISHLIST);
@@ -39,6 +39,10 @@ public class WishListObject extends BasePage{
 	}
 	public boolean noProductWishList(String value) {
 		String errorMessage = getTextOfElement(driver, WishLishUI.NO_PRODUCT_WISHLIST);
+		return errorMessage.contains(value);
+	}
+	public boolean checkShopcart(String value) {
+		String errorMessage = getTextOfElement(driver, WishLishUI.CHECK_SHOPCART);
 		return errorMessage.contains(value);
 	}
 	

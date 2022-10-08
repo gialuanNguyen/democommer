@@ -8,7 +8,7 @@
 			<class name="com.nopcommerce.demo.RegisterPage" />
 			<class name="com.nopcommerce.demo.SearchPage" />
 			<class name="com.nopcommerce.demo.WishList" />-->
-			<class name="com.nopcommerce.demo.SearchPage" />
+			<class name="com.nopcommerce.demo.WishList" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

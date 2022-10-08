@@ -38,4 +38,8 @@ public class loginPageObject extends BasePage{
 		String errorMessage = getTextOfElement(driver,LoginPageUI.HOME_PAGE );
 		return errorMessage.contains(value);
 	}
+	public boolean checkPageUrl(String value) {
+		String errorMessage = getPageUrl(driver );
+		return errorMessage.equals(value);
+	}
 }

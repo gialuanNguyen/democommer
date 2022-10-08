@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import PageObjects.HomePageObject;
 import PageObjects.MyAccountObject;
 import PageObjects.loginPageObject;
 import common.BaseTest;
@@ -16,9 +17,10 @@ public class MyAccount extends BaseTest {
 	WebDriver driver;
 	MyAccountObject myAccount;
 	String Password2 = "123456";
-	String Email = "123456@gmail.com";
+	String Email = "1234567@gmail.com";
 	String Password = "1234567";
 	loginPageObject loginPage;
+	HomePageObject homePage;
 
 	@Parameters({ "browser" })
 	@BeforeClass
@@ -40,6 +42,7 @@ public class MyAccount extends BaseTest {
 		loginPage.inputTexbox(Email, "Email");
 		loginPage.inputTexbox(Password2, "Password");
 		loginPage.clickTologinButton();
+		Assert.assertTrue(loginPage.checkPageUrl("https://demo.nopcommerce.com/"));
 		myAccount.clickMyaccountButton();
 		myAccount.inputGender();
 		myAccount.input_prepare("123", "FirstName");
@@ -48,24 +51,15 @@ public class MyAccount extends BaseTest {
 		myAccount.enterToDropdown("April", "DateOfBirthMonth");
 		myAccount.enterToDropdown("1996", "DateOfBirthYear");
 		myAccount.clickSaveButton();
-		myAccount.clickAddresses();
 		sleepInSecond(2);
-//		myAccount.clickInformation("FirstName");
-//		Assert.assertTrue(myAccount.checkInformation("123","FirstName"));
-////		myAccount.clickInformation("LastName");
-//		Assert.assertTrue(myAccount.checkInformation( "12","LastName"));
-////		myAccount.clickInformation2("DateOfBirthDay");
-//		Assert.assertTrue(myAccount.checkInformation("7","DateOfBirthDay"));
-////		myAccount.clickInformation2("DateOfBirthMonth");
-//		Assert.assertTrue(myAccount.checkInformation("Apr", "DateOfBirthMonth"));
-////		myAccount.clickInformation2("DateOfBirthYear");
-//		Assert.assertTrue(myAccount.checkInformation("1996","DateOfBirthYear"));
-//		sleepInSecond(2);
+		Assert.assertEquals(myAccount.getAttributeMyAccount("value", "FirstName"), "123");
+		Assert.assertEquals(myAccount.getAttributeMyAccount("value", "LastName"), "12");
+		sleepInSecond(2);
+		myAccount.clickAddresses();
 	}
 
 	@Test
 	public void TC02_Addresses() {
-
 		myAccount.clickAddNew();
 		myAccount.input_Addresses("luan", "FirstName");
 		myAccount.input_Addresses("nguyen", "LastName");
@@ -104,7 +98,17 @@ public class MyAccount extends BaseTest {
 		myAccount.input_ChangePassword(Password, "ConfirmNewPassword");
 		myAccount.clickChangePasswordButton();
 		Assert.assertTrue(myAccount.checkChangePasswordSuccess("Password was changed"));
+		myAccount.clickLogOut();
+		Assert.assertEquals(loginPage.getPageUrl(driver), "https://demo.nopcommerce.com/cart");
+		homePage.clickLogin();
+		loginPage.inputTexbox(Email, "Email");
+		loginPage.inputTexbox(Password2, "Password");
+		loginPage.refeshCurrentPage(driver);
+		loginPage.clickTologinButton();
+		Assert.assertTrue(loginPage.loginUnsuccess("Login was unsuccessful. Please correct the errors and try again."));
+		Assert.assertTrue(loginPage.loginUnsuccess("The credentials provided are incorrect"));
+		loginPage.inputTexbox(Email, "Email");
+		loginPage.inputTexbox(Password, "Password");
 	}
-	
-	
+
 }

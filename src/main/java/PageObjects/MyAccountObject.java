@@ -119,5 +119,12 @@ public class MyAccountObject extends BasePage {
 		String errorMessage = getTextOfElement(driver, MyAccountUI.CHANGE_PASSWORD_SUCCESS);
 		return errorMessage.contains(value);
 	}
-	
+	public void clickLogOut() {
+		waitForElementvisible(driver, MyAccountUI.LOGOUT_BUTTON);
+		clickToElement(driver, MyAccountUI.LOGOUT_BUTTON);
+	}
+	public String getAttributeMyAccount(String value , String textbox) {
+		return getAttributeValue(driver,MyAccountUI.INPUT_PREPARE,value,textbox);
+		
+	}
 }

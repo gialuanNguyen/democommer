@@ -40,6 +40,7 @@ public class SearchPage extends BaseTest{
 		loginPage.inputTexbox(Email, "Email");
 		loginPage.inputTexbox(Password2, "Password");
 		loginPage.clickTologinButton();
+		Assert.assertTrue(loginPage.checkPageUrl("https://demo.nopcommerce.com/"));
 		searchPage.clickSearch();
 		searchPage.clickSearchButton();
 		Assert.assertTrue(searchPage.SearchError("Search term minimum length is 3 characters","warning"));
